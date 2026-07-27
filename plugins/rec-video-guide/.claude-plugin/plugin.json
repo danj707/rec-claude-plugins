@@ -1,0 +1,9 @@
+{
+  "name": "rec-video-guide",
+  "description": "Prompt-to-video walkthrough generator for the Rec platform: drives the real rec.us UI with Playwright, records with cursor/caption overlays, narrates with ElevenLabs (Piper fallback), and delivers MP4 + GIF guides.",
+  "version": "0.2.0",
+  "author": {
+    "name": "Rec Technologies",
+    "email": "dan@rec.us"
+  }
+}

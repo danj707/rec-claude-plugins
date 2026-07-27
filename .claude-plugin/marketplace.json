@@ -1,0 +1,14 @@
+{
+  "name": "rec-claude-plugins",
+  "owner": {
+    "name": "Rec Technologies",
+    "email": "dan@rec.us"
+  },
+  "plugins": [
+    {
+      "name": "rec-video-guide",
+      "source": "./plugins/rec-video-guide",
+      "description": "Generate narrated in-product video walkthroughs and GIF guides of the Rec platform from a one-line prompt — Playwright-driven recording with cursor/caption overlays, ElevenLabs voice narration (Piper fallback), MP4/GIF output."
+    }
+  ]
+}
