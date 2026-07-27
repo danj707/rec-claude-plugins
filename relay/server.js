@@ -18,6 +18,15 @@ const MAX = parseInt(process.env.MAX_CHARS || '1000', 10);
 
 http.createServer(async (req, res) => {
   if (req.method === 'GET' && req.url === '/healthz') { res.end('ok'); return; }
+  if (req.method === 'GET' && req.url.startsWith('/samples/')) {
+    const fs = require('fs'), path = require('path');
+    const name = req.url.split('/').pop().split('?')[0];
+    const f = path.join(__dirname, 'samples', path.basename(name));
+    if (!fs.existsSync(f)) { res.statusCode = 404; res.end('not found'); return; }
+    res.setHeader('Content-Type', 'video/mp4');
+    fs.createReadStream(f).pipe(res);
+    return;
+  }
   if (req.method !== 'POST' || !req.url.startsWith('/tts')) { res.statusCode = 404; res.end('not found'); return; }
   if (TOKEN && req.headers.authorization !== `Bearer ${TOKEN}`) { res.statusCode = 401; res.end('unauthorized'); return; }
   if (!KEY) { res.statusCode = 500; res.end('ELEVENLABS_API_KEY not configured'); return; }
