@@ -10,37 +10,39 @@ const OVERLAY = `
 (() => {
   if (window.__ovl) return; window.__ovl = true;
   const mk = () => {
-    if (document.getElementById('__cursor') || !document.body) return;
+    const root = document.documentElement;
+    if (!root || document.getElementById('__cursor')) return;
     const c = document.createElement('div'); c.id = '__cursor';
     c.style.cssText = 'position:fixed;z-index:2147483647;width:22px;height:22px;border-radius:50%;background:rgba(20,20,20,.45);border:2.5px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.5);pointer-events:none;transform:translate(-50%,-50%);left:-50px;top:-50px';
-    document.body.appendChild(c);
+    root.appendChild(c);
     const cap = document.createElement('div'); cap.id = '__cap';
     cap.style.cssText = 'position:fixed;z-index:2147483646;left:50%;bottom:34px;transform:translateX(-50%);max-width:72%;background:rgba(17,17,22,.92);color:#fff;font:600 21px/1.45 -apple-system,Segoe UI,Roboto,sans-serif;padding:14px 26px;border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.45);opacity:0;transition:opacity .35s;text-align:center;pointer-events:none';
-    document.body.appendChild(cap);
+    root.appendChild(cap);
     if (window.__lastCap) { cap.textContent = window.__lastCap; cap.style.opacity = '1'; }
   };
-  new MutationObserver(mk).observe(document.documentElement, { childList: true, subtree: false });
-  document.addEventListener('DOMContentLoaded', mk);
-  mk();
-  document.addEventListener('mousemove', e => { mk(); const c = document.getElementById('__cursor'); if (c) { c.style.left = e.clientX + 'px'; c.style.top = e.clientY + 'px'; } }, true);
-  document.addEventListener('mousedown', e => {
-    mk();
-    const r = document.createElement('div');
-    r.style.cssText = 'position:fixed;z-index:2147483645;width:14px;height:14px;border-radius:50%;border:3px solid #fbbf24;pointer-events:none;transform:translate(-50%,-50%);left:' + e.clientX + 'px;top:' + e.clientY + 'px;opacity:.95;transition:width .45s,height .45s,opacity .45s';
-    document.body.appendChild(r);
-    requestAnimationFrame(() => { r.style.width = '58px'; r.style.height = '58px'; r.style.opacity = '0'; });
-    setTimeout(() => r.remove(), 600);
-  }, true);
   window.__setCap = t => { mk(); window.__lastCap = t; const el = document.getElementById('__cap'); if (!el) return; if (!t) { el.style.opacity = '0'; return; } el.textContent = t; el.style.opacity = '1'; };
   window.__title = (big, small, hold) => {
     mk();
     const w = document.createElement('div');
     w.style.cssText = 'position:fixed;inset:0;z-index:2147483644;background:linear-gradient(135deg,#111116,#26262e);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;opacity:1;transition:opacity .6s';
     w.innerHTML = '<div style="font:800 44px -apple-system,Segoe UI,Roboto,sans-serif;color:#fff">' + big + '</div><div style="font:500 22px -apple-system,Segoe UI,Roboto,sans-serif;color:#fbbf24">' + small + '</div>';
-    document.body.appendChild(w);
+    document.documentElement.appendChild(w);
     setTimeout(() => { w.style.opacity = '0'; setTimeout(() => w.remove(), 700); }, hold || 2600);
   };
-})();`;
+  document.addEventListener('mousemove', e => { mk(); const c = document.getElementById('__cursor'); if (c) { c.style.left = e.clientX + 'px'; c.style.top = e.clientY + 'px'; } }, true);
+  document.addEventListener('mousedown', e => {
+    mk();
+    const r = document.createElement('div');
+    r.style.cssText = 'position:fixed;z-index:2147483645;width:14px;height:14px;border-radius:50%;border:3px solid #fbbf24;pointer-events:none;transform:translate(-50%,-50%);left:' + e.clientX + 'px;top:' + e.clientY + 'px;opacity:.95;transition:width .45s ease-out,height .45s ease-out,opacity .45s ease-out';
+    document.documentElement.appendChild(r);
+    requestAnimationFrame(() => { r.style.width = '58px'; r.style.height = '58px'; r.style.opacity = '0'; });
+    setTimeout(() => r.remove(), 600);
+  }, true);
+  const boot = () => { try { mk(); new MutationObserver(mk).observe(document.documentElement, { childList: true, subtree: false }); } catch (e) {} };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
+`;
 
 async function launch({ vidDir, width = 1440, height = 900, record = true }) {
   const b = await chromium.launch({

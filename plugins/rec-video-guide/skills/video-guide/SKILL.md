@@ -58,7 +58,7 @@ Defaults when unspecified: captioned MP4 **with** voice narration, 60–120s, 14
 ## Workflow
 
 1. **Parse the request** → list of scenes. Budget narration: ~2.5 spoken words/sec; a 2-minute cap ≈ 250 narration words across ~8–12 cues.
-2. **Recon** (no recording): drive the flow, screenshot each state, verify selectors, note popups. Read the matching help article (help.rec.us / Rec U Training Center) so narration uses the product's own vocabulary.
+2. **Recon** (no recording): drive the flow, screenshot each state, verify selectors, note popups. **Also verify the overlay actually renders** — evaluate `typeof window.__setCap === 'function'` on a loaded page; a silent init-script crash means captionless output (this happened once: a MutationObserver observing a null documentElement at document-start). Read the matching help article (help.rec.us / Rec U Training Center) so narration uses the product's own vocabulary.
 3. **Write narration lines** to `narr/lines.json` (`[{id, text}]`), synthesize with `assets/tts.js`, which also measures durations and writes them back.
 4. **Record** using `assets/record-rig.js` (copy to scratchpad, `require` it). Structure: title card → scenes, each scene = `cue(id, caption, dur)` → actions → `finishCue(id)` (waits out the narration). The rig injects the cursor, click ripples, and caption bar into the page so they render into the video, and logs cue timestamps.
 5. **Mux**: overlay each narration clip at its cue timestamp:
@@ -72,7 +72,8 @@ Defaults when unspecified: captioned MP4 **with** voice narration, 60–120s, 14
 
 - Human pacing: eased cursor moves (the rig does this), ~60ms/keystroke typing, ≥1s settle after page loads.
 - Captions ≤ 60 chars, imperative voice ("Check Refund, then click Continue"); narration is the longer conversational version of the same beat.
-- Title card at open (flow name + duration), outro card pointing at help.rec.us.
+- Title card at open (flow name + duration), outro card with a help pointer.
+- **Help-center referral rule (from Dan, 7/27): admin/staff-facing videos point to the Rec University Training Center; only resident/end-user-facing videos point to help.rec.us.** Applies to narration AND the outro card text.
 - If a run fails mid-recording, fix the selector in recon mode and re-record from scratch — never ship a video with a visible mistake/backtrack.
 
 See `assets/example-refund-video.js` for a complete production script (the refund walkthrough), with credentials scrubbed.
