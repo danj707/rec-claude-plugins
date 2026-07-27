@@ -101,6 +101,7 @@ Named workflows for video requests — each row is a flow the skill can script f
 | GL reconciliation | Accounting → General Ledger → Roll-Up / Entries | — |
 | Refund automations | Automations → `/automations/refunds` | New find — worth a short video of its own |
 | Add an instructor | Instructors → *New Instructor* | — |
+| New-admin orientation / getting started | Public site tabs → login → account menu → Admin Dashboard → sidebar groups → name-click → Settings → Training Center | 🎞 'Welcome to Rec' recorded 7/27 |
 
 ## Crawl notes (delta from v1)
 
@@ -109,4 +110,5 @@ Named workflows for video requests — each row is a flow the skill can script f
 - **Seasons** is a filter view over Sections, not its own records.
 - **Automations** contains at least a refunds automation — relevant to the refund video series.
 - **Memberships deep recon (7/27)**: Purchases tab has KPI cards (Usage/Purchases/Cancellations/Payments, 30-day default range); purchase-row ⋯ = View Last Receipt / Cancel Membership / Purchase Again; plan-row ⋯ = Edit / Unpublish from Internal|Public Store (per-store globes in the table). Plan editor is a full-screen modal; membership type adds Auto Renew (card-only), passes carry punch-style Access Benefits. Household **Memberships & Passes** tab can flash 'No results.' while loading — wait for rows before filming.
+- **Account menu & Settings (7/27)**: clicking the user's name (top-left of the sidebar) opens a menu — Settings · Desk location · My notifications · Rec admin · **Training Center** (Rec University link) · Share feedback · Log out. `/settings` is the control room: Organization Details, Desk Locations, Email, SMS, Finance, Forms, Items, Members/Roles & Permissions, Policies, Permits, Scholarships, Integrations, AI Refund Suggestions, Manage locations. Global search (Ctrl-K) returns grouped People/Sections/Transactions/Pages results.
 - **No permission walls** anywhere with the org-admin test account. Instructor-portal views remain the only unmapped surface (needs an instructor test login).

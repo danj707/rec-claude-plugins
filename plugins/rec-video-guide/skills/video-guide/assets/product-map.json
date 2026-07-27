@@ -513,5 +513,41 @@
     "actions": []
    }
   }
- ]
+ ],
+ "accountMenu": {
+  "recon": "2026-07-27",
+  "trigger": "click the user's name top-left of the admin sidebar (e.g. 'Dan Tester')",
+  "items": [
+   "Settings (/admin/o/:org/settings)",
+   "Desk location",
+   "My notifications (/my-notifications)",
+   "Rec admin (/rec)",
+   "Training Center (external: Rec University Notion)",
+   "Share feedback (Airtable form)",
+   "Log out"
+  ],
+  "settingsPage": {
+   "url": "/admin/o/:org/settings",
+   "sections": [
+    "Organization Details",
+    "Desk Locations",
+    "Email",
+    "SMS",
+    "Finance",
+    "Forms",
+    "Items",
+    "Members (assign roles)",
+    "Policies",
+    "Roles and Permissions",
+    "Facility Rentals",
+    "Permits",
+    "Scholarships",
+    "Integrations",
+    "AI Refund Suggestions",
+    "Manage locations"
+   ],
+   "note": "The 'where do I find that' area \u2014 not in the left nav, only behind the name click. Seasons + GL live in the sidebar (Programming/Accounting), not here."
+  },
+  "globalSearch": "Home page search or Ctrl-K anywhere; grouped results: People / Sections / Transactions / Pages"
+ }
 }
