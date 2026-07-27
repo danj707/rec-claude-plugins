@@ -4,5 +4,5 @@
   "orgId": "a976a11a-5303-4785-838a-1b281ca77678",
   "testEmail": "dan+test99@rec.us",
   "testPassword": "Password01!",
-  "ttsRelayUrl": ""
+  "ttsRelayUrl": "https://tts-relay-production-ed5c.up.railway.app"
 }
