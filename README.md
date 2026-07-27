@@ -1,5 +1,24 @@
 # rec-claude-plugins
 
+## PS Quickstart — make a video in 3 steps
+
+**One-time (5 min):**
+1. Get GitHub read access to this repo (ask Dan).
+2. Open [claude.ai/code](https://claude.ai/code). In your environment settings, set the network policy to allow `rec.us`, `*.rec.us`, and `*.railway.app` (or use the shared PS Videos environment if one exists).
+3. In any session, run:
+   ```
+   /plugin marketplace add danj707/rec-claude-plugins
+   /plugin install rec-video-guide@rec-claude-plugins
+   ```
+
+**Every time after that — just ask, in plain English:**
+
+> Make me a video walkthrough of purchasing a membership for a resident, under 90 seconds, with narration.
+
+Claude logs into the test org, maps the flow, records it with cursor + captions, narrates it with the Rec voice, and hands you the MP4 (and a GIF if you ask) right in the chat. New flows take ~10–20 minutes; no keys or credentials needed on your side. Full how-to for the PS team: see "Claude AI: Video Creation Process" in the Partner Success Notion space.
+
+---
+
 Claude Code plugins for Rec Technologies internal tooling. First (and so far only) plugin: **rec-video-guide** — a prompt-to-video generator that turns "make me a video walkthrough of X" into a narrated MP4 + GIF recorded live against the Rec product.
 
 ## Install (teammates)
