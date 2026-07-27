@@ -64,9 +64,16 @@ async function launch({ vidDir, width = 1440, height = 900, record = true }) {
   const cues = [];
   const cueEnds = {};
 
+  // Navigation destroys the window object, wiping the caption bar. Track the
+  // active caption Node-side and re-apply it whenever a new document loads.
+  let lastCap = '';
+  p.on('load', () => {
+    if (lastCap) p.evaluate(t => window.__setCap && window.__setCap(t), lastCap).catch(() => {});
+  });
+
   const helpers = {
     now, cues,
-    cap: t => p.evaluate(t => window.__setCap(t), t).catch(() => {}),
+    cap: t => { lastCap = t; return p.evaluate(t => window.__setCap(t), t).catch(() => {}); },
     pause: ms => p.waitForTimeout(ms),
     title: (big, small, hold) => p.evaluate(a => window.__title(a.big, a.small, a.hold), { big, small, hold }).catch(() => {}),
     moveTo: async (x, y) => {

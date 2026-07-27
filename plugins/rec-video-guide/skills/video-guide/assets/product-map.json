@@ -5,12 +5,12 @@
   "method": "read-only Playwright crawl, breadth-2 (list pages + first sample record each)",
   "knownWizards": {
    "manageOrder": {
-    "entry": "row ⋯ menu → Manage (transactions/bookings) — OPENS NEW TAB",
+    "entry": "row \u22ef menu \u2192 Manage (transactions/bookings) \u2014 OPENS NEW TAB",
     "urlPattern": "/admin/o/:org/orders/:id/manage?orderItemId=:id",
     "steps": [
-     "1 Select Items (Refund ☑ / Waive Payment Plan)",
+     "1 Select Items (Refund \u2611 / Waive Payment Plan)",
      "Continue",
-     "2 Review & Confirm (amount, method, customer note) → Confirm"
+     "2 Review & Confirm (amount, method, customer note) \u2192 Confirm"
     ]
    }
   },
@@ -77,7 +77,7 @@
     "test",
     "Food",
     "Gift Card",
-    "BEER 🍺",
+    "BEER \ud83c\udf7a",
     "Merch",
     "DCCSC Concession Items"
    ],
@@ -320,20 +320,88 @@
   {
    "label": "Memberships",
    "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/memberships",
-   "h1": "",
+   "h1": "Memberships",
    "tabs": [
     "Purchases",
     "Plans"
    ],
    "actions": [
-    "Send Message"
+    "Send Message",
+    "Add Membership (Plans tab)"
    ],
+   "recon": {
+    "date": "2026-07-27",
+    "purchasesTab": {
+     "kpiCards": [
+      "Usage",
+      "Purchases",
+      "Cancellations",
+      "Payments"
+     ],
+     "dateRangeFilter": "default 30 Days",
+     "columns": [
+      "Name",
+      "Membership",
+      "Status",
+      "Usage",
+      "Start Date",
+      "End Date",
+      "Renewal Date",
+      "Last Payment"
+     ],
+     "rowClick": "nothing (no drawer, no nav)",
+     "rowMenu": [
+      "View Last Receipt",
+      "Cancel Membership",
+      "Purchase Again"
+     ],
+     "bulk": "checkbox select rows -> Send Message"
+    },
+    "plansTab": {
+     "columns": [
+      "Name",
+      "Price",
+      "Duration",
+      "Usage",
+      "Purchases",
+      "Sales",
+      "Auto Renewal",
+      "Internal Store",
+      "Public Store"
+     ],
+     "storeGlobes": "Internal/Public Store columns show per-store publish state",
+     "rowClick": "opens full-screen editor /memberships/:id?type=membership|pass",
+     "rowMenu": [
+      "Edit",
+      "Unpublish from Internal Store",
+      "Unpublish from Public Store"
+     ],
+     "addMembership": "Select Type dialog: Membership (set duration, monthly/annual) vs Pass (fixed number of uses, punch cards)"
+    },
+    "editorSections": {
+     "Basic Information": "Name, Photo (membership card; AI image option), Public Description, Internal Description (staff-only, shown at transactions/check-ins)",
+     "Coverage & Eligibility": "Coverage: Individual|Household|Group - LOCKED after creation; Eligibility rules (+ Add)",
+     "Duration & Pricing": "Starts (Signup|custom date), Ends (Duration|date|never) + Duration/Interval; membership-only Auto Renew toggle (credit card only); GL Code (auto-created GL account); Default Price; Special Pricing per group",
+     "Benefit": "Access Benefits (facility/program access rules, e.g. '10 Tier 1 punches'); Discount Benefits marked Coming Soon",
+     "Forms": "attach signup forms (waivers etc.)",
+     "Display Settings": "Publish to Admin Store toggle; Available for Online Purchase toggle; Desk Locations (which desks sell it)"
+    },
+    "publicSite": "Memberships tab = card grid; crown icon = membership, ticket icon = pass; INDIVIDUAL/HOUSEHOLD/GROUP labels; Add to Cart",
+    "householdProfile": "Memberships & Passes tab: grouped by status, columns Name/Member(s)/Coverage/Type/Start/End/Payment, shows 'N uses remaining'; row click does nothing; filters Status/Member/Type; table can briefly show 'No results.' while loading - wait for rows",
+    "sampleEditorUrls": {
+     "membership": "/memberships/e9eed5ee-0c86-4371-b7d7-1441b2d25051?type=membership",
+     "pass": "/memberships/78562ce7-b86f-4bd7-9a50-c7c244eec626?type=pass"
+    }
+   },
    "detail": {
     "urlPattern": "/admin/o/:id/memberships/:id?type=pass&returnQuery=tab%3Dplans",
     "newTab": false,
-    "h1": "",
+    "h1": "Edit Pass / Edit Membership (full-screen modal editor)",
     "tabs": [],
-    "actions": []
+    "actions": [
+     "Cancel",
+     "Save"
+    ]
    }
   },
   {

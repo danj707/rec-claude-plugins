@@ -92,7 +92,8 @@ Named workflows for video requests — each row is a flow the skill can script f
 | Create a section | Programming → Sections → *New Section* (drawer) | Ask: standalone section or from a Template? |
 | Create a program template | Programming → Templates → *New Program* → `/programming/programs/:id` | — |
 | Waitlist → roster | Household → Waitlist tab (or section drawer roster) | Ask: from the household side or the section side? |
-| Sell a membership to a resident | Memberships → Plans → `:id` · or Household → Memberships & Passes | Ask: front-desk sale or plan setup? |
+| Sell a membership to a resident | Purchases tab ⋯ *Purchase Again* · or admin store · Household → Memberships & Passes shows what they hold | Ask: front-desk sale or plan setup? |
+| Build/edit a membership plan | Memberships → Plans → *Add Membership* → Select Type (Membership = duration · Pass = N uses) → editor: Basic Info / Coverage & Eligibility (coverage locked after create) / Duration & Pricing (Auto Renew, GL code, special pricing) / Benefits / Forms / Display Settings (admin store · online purchase · desk locations) | 🎞 overview recorded 7/27 |
 | Facility rental lifecycle | Facilities → Rentals → *New Rental* → `/facility-rentals/:id`; Applications drawer feeds it; Deposits & Balance Due are tabs/views of the same rental | Ask: which stage (application, booking, deposit, balance)? |
 | Create an event | Events → *New Event* → `/events/:id` | — |
 | Send a marketing message | Marketing → Segments (build audience) → Messages → *New Message* (Email/SMS) | Ask: one-off message or newsletter? |
@@ -107,4 +108,5 @@ Named workflows for video requests — each row is a flow the skill can script f
 - **Drawer sections** (no navigation on row click): Sections, Competitions, Site Reservations, Applications. Videos of these flows should zoom/caption the drawer, since there's no URL change to anchor on.
 - **Seasons** is a filter view over Sections, not its own records.
 - **Automations** contains at least a refunds automation — relevant to the refund video series.
+- **Memberships deep recon (7/27)**: Purchases tab has KPI cards (Usage/Purchases/Cancellations/Payments, 30-day default range); purchase-row ⋯ = View Last Receipt / Cancel Membership / Purchase Again; plan-row ⋯ = Edit / Unpublish from Internal|Public Store (per-store globes in the table). Plan editor is a full-screen modal; membership type adds Auto Renew (card-only), passes carry punch-style Access Benefits. Household **Memberships & Passes** tab can flash 'No results.' while loading — wait for rows before filming.
 - **No permission walls** anywhere with the org-admin test account. Instructor-portal views remain the only unmapped surface (needs an instructor test login).
