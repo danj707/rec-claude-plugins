@@ -546,7 +546,73 @@
     "AI Refund Suggestions",
     "Manage locations"
    ],
-   "note": "The 'where do I find that' area \u2014 not in the left nav, only behind the name click. Seasons + GL live in the sidebar (Programming/Accounting), not here."
+   "note": "The 'where do I find that' area \u2014 not in the left nav, only behind the name click. Seasons + GL live in the sidebar (Programming/Accounting), not here.",
+   "subpages": {
+    "Organization Details": {
+     "url": "/settings/details",
+     "has": "name, display name, address, organization logos"
+    },
+    "Desk Locations": {
+     "url": "/settings/desk-locations",
+     "has": "table Name/Description; recorded on transactions & check-ins"
+    },
+    "Email": {
+     "url": "/settings/email",
+     "has": "default marketing + transactional from-emails, custom domain verification"
+    },
+    "SMS": {
+     "url": "/settings/sms",
+     "has": "credit balance, rate per message; sender numbers managed globally"
+    },
+    "Finance": {
+     "url": "/settings/finance",
+     "has": "GL Library (Chart of Accounts), Accounting (Default Accounts, General Ledger), Transaction Rules (Tax, Processing Fee, Ticket Service Fee)"
+    },
+    "Forms": {
+     "url": "/settings/forms",
+     "has": "form library with expiry; responses kept on file"
+    },
+    "Items": {
+     "url": "/settings/items",
+     "has": "products & fees: default price, priced-per, Show In Admin Store"
+    },
+    "Members": {
+     "url": "/settings/members",
+     "has": "staff list: user, primary contact, access level; New member"
+    },
+    "Policies": {
+     "url": "/settings/policies",
+     "has": "policy list; adding one auto-creates a public policy page + master page"
+    },
+    "Roles and Permissions": {
+     "url": "/settings/organization-roles",
+     "has": "Full/Limited Access + custom roles"
+    },
+    "Facility Rentals": {
+     "url": "/settings/facility-rentals",
+     "has": "mobile/SMS verification requirements for reservations"
+    },
+    "Permits": {
+     "url": "/settings/permits",
+     "has": "Enable Permitting, Auto-Issue for Instant Books, Default Conditions of Use"
+    },
+    "Scholarships": {
+     "url": "/settings/scholarships",
+     "has": "table: display name, value, awarded count, awarded value"
+    },
+    "Integrations": {
+     "url": "/settings/integrations",
+     "has": "Seam smart locks, Musco field lighting"
+    },
+    "AI Refund Suggestions": {
+     "url": "/settings/ai",
+     "has": "Admin + Customer-Facing suggestion toggles, Written Policies source, History"
+    },
+    "Manage locations": {
+     "url": "/locations",
+     "has": "exits settings to the Locations & Sites list"
+    }
+   }
   },
   "globalSearch": "Home page search or Ctrl-K anywhere; grouped results: People / Sections / Transactions / Pages"
  }
