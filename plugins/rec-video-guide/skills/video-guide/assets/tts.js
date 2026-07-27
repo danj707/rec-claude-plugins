@@ -22,8 +22,26 @@ function durationOf(file) {
   return m ? (+m[1] * 3600 + +m[2] * 60 + +m[3]) : 0;
 }
 
+// Preferred: Rec's own TTS relay (no secrets needed client-side).
+// URL from TTS_RELAY_URL env or config.json ttsRelayUrl.
+function relayUrl() {
+  if (process.env.TTS_RELAY_URL) return process.env.TTS_RELAY_URL;
+  try { return require('./config.json').ttsRelayUrl || ''; } catch { return ''; }
+}
+
+async function relay(text, outFile) {
+  const headers = { 'Content-Type': 'application/json' };
+  if (process.env.TTS_RELAY_TOKEN) headers.Authorization = `Bearer ${process.env.TTS_RELAY_TOKEN}`;
+  const resp = await fetch(`${relayUrl().replace(/\/$/, '')}/tts`, {
+    method: 'POST', headers,
+    body: JSON.stringify({ text, voice: process.env.ELEVENLABS_VOICE_ID || undefined }),
+  });
+  if (!resp.ok) throw new Error(`relay ${resp.status}: ${(await resp.text()).slice(0, 200)}`);
+  fs.writeFileSync(outFile, Buffer.from(await resp.arrayBuffer()));
+}
+
 async function elevenlabs(text, outFile) {
-  const voice = process.env.ELEVENLABS_VOICE_ID || '21m00Tcm4TlvDq8ikWAM'; // Rachel
+  const voice = process.env.ELEVENLABS_VOICE_ID || 'EXAVITQu4vr4xnSDxMaL'; // Sarah (premade — works on free plan)
   const resp = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice}?output_format=mp3_44100_128`, {
     method: 'POST',
     headers: { 'xi-api-key': process.env.ELEVENLABS_API_KEY, 'Content-Type': 'application/json' },
@@ -46,10 +64,13 @@ function piper(text, outFile) {
 // ElevenLabs call will bypass the egress proxy and fail.
 async function synthesizeAll(lines, { outDir = 'narr' } = {}) {
   fs.mkdirSync(outDir, { recursive: true });
-  const useEleven = !!process.env.ELEVENLABS_API_KEY;
+  // Priority: Rec TTS relay (zero-setup) → direct ElevenLabs key → local Piper.
+  const mode = relayUrl() ? 'relay' : (process.env.ELEVENLABS_API_KEY ? 'eleven' : 'piper');
   for (const l of lines) {
-    const file = path.join(outDir, `${l.id}.${useEleven ? 'mp3' : 'wav'}`);
-    if (useEleven) await elevenlabs(l.text, file); else piper(l.text, file);
+    const file = path.join(outDir, `${l.id}.${mode === 'piper' ? 'wav' : 'mp3'}`);
+    if (mode === 'relay') await relay(l.text, file);
+    else if (mode === 'eleven') await elevenlabs(l.text, file);
+    else piper(l.text, file);
     l.file = file;
     l.dur = durationOf(file);
   }

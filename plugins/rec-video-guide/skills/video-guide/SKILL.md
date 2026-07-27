@@ -30,7 +30,7 @@ Defaults when unspecified: captioned MP4 **with** voice narration, 60–120s, 14
   — the egress proxy's TLS interception fails on Chromium's TLS 1.3 handshake; TLS 1.2 works and certificate verification stays on. If `www.rec.us` is unreachable (curl exit 56 / CONNECT 403), the environment's network policy must allow `rec.us` and `*.rec.us` (and `api.elevenlabs.io` for narration) — ask the user to update it; don't work around. On a local machine (no HTTPS_PROXY), drop both args.
 - **ffmpeg**: `npm install -g ffmpeg-static` → binary at `$(npm root -g)/ffmpeg-static/ffmpeg` (apt often unavailable).
 - **TTS** — see `assets/tts.js`, which implements this logic:
-  - **Primary: ElevenLabs** when `ELEVENLABS_API_KEY` is set. `POST https://api.elevenlabs.io/v1/text-to-speech/{voiceId}?output_format=mp3_44100_128` with header `xi-api-key`, body `{"text": ..., "model_id": "eleven_multilingual_v2"}`. Voice: `ELEVENLABS_VOICE_ID` env var, else Rachel (`21m00Tcm4TlvDq8ikWAM`). If the key is missing, ask the user before silently downgrading the voice.
+  - **Primary: ElevenLabs** when `ELEVENLABS_API_KEY` is set. `POST https://api.elevenlabs.io/v1/text-to-speech/{voiceId}?output_format=mp3_44100_128` with header `xi-api-key`, body `{"text": ..., "model_id": "eleven_multilingual_v2"}`. Voice: `ELEVENLABS_VOICE_ID` env var, else Sarah (`EXAVITQu4vr4xnSDxMaL`, a premade voice — library voices like Rachel require a paid ElevenLabs plan). If the key is missing, ask the user before silently downgrading the voice.
   - **Fallback: Piper (local neural TTS)** — no key, no cost, noticeably robotic:
     ```bash
     curl -sL -o piper.tgz https://github.com/rhasspy/piper/releases/download/2023.11.14-2/piper_linux_x86_64.tar.gz && tar xzf piper.tgz

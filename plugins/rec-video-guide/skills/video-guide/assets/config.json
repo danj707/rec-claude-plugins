@@ -1,0 +1,8 @@
+{
+  "_comment": "Defaults for zero-setup use by Rec internal partners. The account below is a TEST account scoped to the Niagara Falls sandbox org (fake data only). Env vars REC_TEST_EMAIL / REC_TEST_PASSWORD override. To rotate: change the password in Rec, update here, push.",
+  "orgPageUrl": "https://www.rec.us/organizations/city-of-niagara-falls",
+  "orgId": "a976a11a-5303-4785-838a-1b281ca77678",
+  "testEmail": "dan+test99@rec.us",
+  "testPassword": "Password01!",
+  "ttsRelayUrl": ""
+}
