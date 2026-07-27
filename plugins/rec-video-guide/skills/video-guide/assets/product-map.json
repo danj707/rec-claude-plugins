@@ -1,0 +1,449 @@
+{
+ "_meta": {
+  "crawled": "2026-07-26/27",
+  "account": "org-admin test account, Niagara Falls sandbox org",
+  "method": "read-only Playwright crawl, breadth-2 (list pages + first sample record each)",
+  "knownWizards": {
+   "manageOrder": {
+    "entry": "row ⋯ menu → Manage (transactions/bookings) — OPENS NEW TAB",
+    "urlPattern": "/admin/o/:org/orders/:id/manage?orderItemId=:id",
+    "steps": [
+     "1 Select Items (Refund ☑ / Waive Payment Plan)",
+     "Continue",
+     "2 Review & Confirm (amount, method, customer note) → Confirm"
+    ]
+   }
+  },
+  "permissionWalls": "none hit with the org-admin test account across all 28 destinations"
+ },
+ "sections": [
+  {
+   "label": "Home",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/home",
+   "h1": "",
+   "tabs": [],
+   "actions": []
+  },
+  {
+   "label": "Users",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/users",
+   "h1": "",
+   "tabs": [
+    "Search",
+    "Visitor log",
+    "Groups"
+   ],
+   "actions": [
+    "New account"
+   ],
+   "detail": {
+    "urlPattern": "/admin/o/:id/users/:id",
+    "newTab": false,
+    "h1": "",
+    "tabs": [
+     "Bookings",
+     "Waitlist",
+     "Transactions",
+     "Profiles",
+     "Memberships & Passes",
+     "Balance Due",
+     "Payment Plans",
+     "Activity"
+    ],
+    "actions": [
+     "Actions",
+     "Edit Balance"
+    ]
+   }
+  },
+  {
+   "label": "Calendar",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/calendar",
+   "h1": "",
+   "tabs": [],
+   "actions": []
+  },
+  {
+   "label": "Store",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/store",
+   "h1": "",
+   "tabs": [
+    "All Products",
+    "Camp",
+    "Aquatics",
+    "Pottery",
+    "Craft Supplies",
+    "Seniors",
+    "test",
+    "Food",
+    "Gift Card",
+    "BEER 🍺",
+    "Merch",
+    "DCCSC Concession Items"
+   ],
+   "actions": []
+  },
+  {
+   "label": "Seb",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/ai-chat",
+   "h1": "",
+   "tabs": [],
+   "actions": []
+  },
+  {
+   "label": "Facility Insights",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/facility-insights",
+   "h1": "",
+   "tabs": [],
+   "actions": []
+  },
+  {
+   "label": "Sections",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/programming/sections",
+   "h1": "",
+   "tabs": [],
+   "actions": [
+    "New Section"
+   ],
+   "detailNote": "row click opens an edit drawer in place (no navigation)"
+  },
+  {
+   "label": "Bookings",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/programming/bookings",
+   "h1": "",
+   "tabs": [],
+   "actions": [],
+   "detail": {
+    "urlPattern": "/admin/o/:id/users/:id?tab=bookings",
+    "newTab": false,
+    "h1": "",
+    "tabs": [
+     "Bookings",
+     "Waitlist",
+     "Transactions",
+     "Profiles",
+     "Memberships & Passes",
+     "Balance Due",
+     "Payment Plans",
+     "Activity"
+    ],
+    "actions": [
+     "Actions",
+     "Edit Balance"
+    ]
+   }
+  },
+  {
+   "label": "Templates",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/programming/templates",
+   "h1": "",
+   "tabs": [],
+   "actions": [
+    "New Program"
+   ],
+   "detail": {
+    "urlPattern": "/admin/o/:id/programming/programs/:id",
+    "newTab": false,
+    "h1": "",
+    "tabs": [],
+    "actions": [
+     "Archive",
+     "New Section"
+    ]
+   }
+  },
+  {
+   "label": "Seasons",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/seasons",
+   "h1": "",
+   "tabs": [],
+   "actions": [],
+   "detail": {
+    "urlPattern": "/admin/o/:id/programming/sections?filters[seasonId]=:id",
+    "newTab": false,
+    "h1": "",
+    "tabs": [],
+    "actions": [
+     "New Section"
+    ]
+   }
+  },
+  {
+   "label": "Instructors",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/instructors",
+   "h1": "",
+   "tabs": [],
+   "actions": [
+    "New Instructor"
+   ],
+   "detail": {
+    "urlPattern": "/admin/o/:id/instructors?filters%5Bstatus%5D=all",
+    "newTab": false,
+    "h1": "",
+    "tabs": [],
+    "actions": [
+     "New Instructor"
+    ]
+   }
+  },
+  {
+   "label": "Events",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/events",
+   "h1": "",
+   "tabs": [],
+   "actions": [
+    "New Event",
+    "New York, NY, USA"
+   ],
+   "detail": {
+    "urlPattern": "/admin/o/:id/events/:id",
+    "newTab": false,
+    "h1": "",
+    "tabs": [
+     "Overview",
+     "Attendees",
+     "Activity"
+    ],
+    "actions": [
+     "Message Attendees",
+     "Check In"
+    ]
+   }
+  },
+  {
+   "label": "Rentals",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/facility-rentals",
+   "h1": "",
+   "tabs": [],
+   "actions": [
+    "New Rental"
+   ],
+   "detail": {
+    "urlPattern": "/admin/o/:id/facility-rentals/:id",
+    "newTab": false,
+    "h1": "",
+    "tabs": [
+     "Reservations",
+     "Deposits",
+     "Invoices",
+     "Permit",
+     "Forms",
+     "Notes",
+     "Activity"
+    ],
+    "actions": [
+     "Add User"
+    ]
+   }
+  },
+  {
+   "label": "Applications",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/rental-applications",
+   "h1": "",
+   "tabs": [],
+   "actions": [],
+   "detail": {
+    "urlPattern": "/admin/o/:id/rental-applications?filters[archived]=non-archived&rentalApplication=:id&drawerId=rental-application-details",
+    "newTab": false,
+    "h1": "",
+    "tabs": [],
+    "actions": []
+   }
+  },
+  {
+   "label": "Balance Due",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/facilities/balance-due",
+   "h1": "",
+   "tabs": [],
+   "actions": [],
+   "detail": {
+    "urlPattern": "/admin/o/:id/facility-rentals/:id",
+    "newTab": true,
+    "h1": "",
+    "tabs": [
+     "Reservations",
+     "Deposits",
+     "Invoices",
+     "Permit",
+     "Details",
+     "Forms",
+     "Notes",
+     "Activity"
+    ],
+    "actions": [
+     "Send Email",
+     "Send SMS"
+    ]
+   }
+  },
+  {
+   "label": "Site Reservations",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/site-reservations",
+   "h1": "",
+   "tabs": [],
+   "actions": [],
+   "detailNote": "row click opens a drawer in place"
+  },
+  {
+   "label": "Deposits",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/facilities/deposit-tracker",
+   "h1": "",
+   "tabs": [],
+   "actions": [],
+   "detail": {
+    "urlPattern": "/admin/o/:id/facility-rentals/:id?tab=deposits",
+    "newTab": false,
+    "h1": "",
+    "tabs": [
+     "Reservations",
+     "Deposits",
+     "Invoices",
+     "Permit",
+     "Forms",
+     "Notes",
+     "Activity"
+    ],
+    "actions": [
+     "Send Email",
+     "Send SMS"
+    ]
+   }
+  },
+  {
+   "label": "Competitions",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/competitions",
+   "h1": "",
+   "tabs": [],
+   "actions": [],
+   "detailNote": "row click opens a drawer in place"
+  },
+  {
+   "label": "Memberships",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/memberships",
+   "h1": "",
+   "tabs": [
+    "Purchases",
+    "Plans"
+   ],
+   "actions": [
+    "Send Message"
+   ],
+   "detail": {
+    "urlPattern": "/admin/o/:id/memberships/:id?type=pass&returnQuery=tab%3Dplans",
+    "newTab": false,
+    "h1": "",
+    "tabs": [],
+    "actions": []
+   }
+  },
+  {
+   "label": "Messages",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/marketing/messages",
+   "h1": "",
+   "tabs": [
+    "Email",
+    "SMS"
+   ],
+   "actions": [
+    "New Message"
+   ],
+   "detail": {
+    "urlPattern": "/admin/o/:id/marketing/messages/:id",
+    "newTab": false,
+    "h1": "",
+    "tabs": [
+     "Overview",
+     "Recipients"
+    ],
+    "actions": []
+   }
+  },
+  {
+   "label": "Segments",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/marketing/segments",
+   "h1": "",
+   "tabs": [],
+   "actions": [
+    "New Segment"
+   ],
+   "detail": {
+    "urlPattern": "/admin/o/:id/marketing/segments/:id",
+    "newTab": false,
+    "h1": "",
+    "tabs": [],
+    "actions": [
+     "Cancel",
+     "Add Condition",
+     "Add Condition Group"
+    ]
+   }
+  },
+  {
+   "label": "Newsletters",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/marketing/newsletter",
+   "h1": "",
+   "tabs": [],
+   "actions": [
+    "New Newsletter"
+   ]
+  },
+  {
+   "label": "Website",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/marketing/website",
+   "h1": "",
+   "tabs": [],
+   "actions": [
+    "Add location"
+   ]
+  },
+  {
+   "label": "Promotions",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/marketing/promotions",
+   "h1": "",
+   "tabs": [],
+   "actions": []
+  },
+  {
+   "label": "Library",
+   "href": "/admin/rec/a976a11a-5303-4785-838a-1b281ca77678/report-library",
+   "h1": "",
+   "tabs": [
+    "Standard",
+    "Finance",
+    "Custombeta"
+   ],
+   "actions": []
+  },
+  {
+   "label": "Dashboard",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/reports",
+   "h1": "",
+   "tabs": [],
+   "actions": []
+  },
+  {
+   "label": "General Ledger",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/accounting/general-ledger",
+   "h1": "",
+   "tabs": [
+    "Roll-Up",
+    "Entries"
+   ],
+   "actions": []
+  },
+  {
+   "label": "Automations",
+   "href": "/admin/o/a976a11a-5303-4785-838a-1b281ca77678/automations",
+   "h1": "",
+   "tabs": [],
+   "actions": [],
+   "detail": {
+    "urlPattern": "/admin/o/:id/automations/refunds",
+    "newTab": false,
+    "h1": "",
+    "tabs": [],
+    "actions": []
+   }
+  }
+ ]
+}

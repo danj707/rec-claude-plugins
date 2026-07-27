@@ -46,6 +46,15 @@ Defaults when unspecified: captioned MP4 **with** voice narration, 60–120s, 14
 - **Manage Order wizard**: step 1 *Select Items* (Refund ☑ / Waive Payment Plan) → *Continue* → step 2 *Review & Confirm* (amount, method, customer note textarea) → *Confirm*.
 - **Admin nav map** (28 destinations): Home · Users (Search/Visitor log/Groups; household profile has 8 tabs: Bookings, Waitlist, Transactions, Profiles, Memberships & Passes, Balance Due, Payment Plans, Activity) · Calendar · Store · Seb (AI) · Facility Insights · Programming (Sections/Bookings/Templates) · Seasons · Instructors · Events · Facilities (Rentals/Applications/Balance Due/Site Reservations/Deposits) · Competitions · Memberships · Marketing (Messages/Segments/Newsletters/Website/Promotions) · Reports (Library/Dashboard) · Accounting (General Ledger) · Automations. Creator actions are consistently "New X" top-right of list pages.
 
+## Grounding requests in the product map
+
+`assets/product-map.json` is a breadth-two crawl of the entire admin (every section, sample detail records, URL patterns, drawer-vs-page behavior, the Manage Order wizard). The human-readable companion with a named **workflow reference table** is `docs/product-map.md` at the repo root. Use them BEFORE recon:
+
+- Map the request to a named workflow in the reference table; take the entry point and URL patterns from the map instead of rediscovering them.
+- If the table's ambiguity column flags the workflow (e.g. refunds: per-user vs. Refund Review queue; memberships: front-desk sale vs. plan setup), **ask the user the clarifying question first** — one question, offering the concrete options from the map.
+- Drawer sections (Sections, Competitions, Site Reservations, Applications) don't navigate on row click — plan captions/zoom accordingly.
+- If the map doesn't cover the flow (e.g. new product surface), fall back to full recon and consider updating the map afterwards.
+
 ## Workflow
 
 1. **Parse the request** → list of scenes. Budget narration: ~2.5 spoken words/sec; a 2-minute cap ≈ 250 narration words across ~8–12 cues.
